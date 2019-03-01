@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.suyuan.search.mapper.SearchUserMapper" >
+  <select id="getUserList" resultType="cn.suyuan.common.pojo.SearchUser" >
+    SELECT
+      a.`personId` id,
+      a.`nickname`,
+      a.`name`,
+      a.`country`,
+      a.`duties`,
+      a.`industry`,
+      b.`companyName` company,
+      b.`officeWebsite`
+    FROM user  a LEFT JOIN company  b
+    ON a.`company` = b.`companyId`;
+  </select>
+
+
+  <select id="getUserById" parameterType="String" resultType="cn.suyuan.common.pojo.SearchUser">
+    SELECT
+      a.`personId` id,
+      a.`nickname`,
+      a.`name`,
+      a.`country`,
+      a.`duties`,
+      b.`companyName` company,
+      b.`officeWebsite`,
+      a.`industry`
+    FROM user  a LEFT JOIN company  b
+    ON a.`company` = b.`companyId`
+    WHERE a.`personId` = #{userId};
+  </select>
+
+</mapper>

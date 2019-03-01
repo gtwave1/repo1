@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/sy_common" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sy_manager_company" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sy_manager_company/sy_manager_company_interface" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sy_manager_company/sy_manager_company_service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sy_manager_dao" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sy_manager_dao/sy_manager_dao_mapper" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sy_manager_dao/sy_manager_dao_pojo" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sy_manager_item" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sy_manager_item/sy_manager_item_interface" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sy_manager_item/sy_manager_item_service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sy_order" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sy_order/sy_order_interface" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sy_order/sy_order_service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sy_parent" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sy_search" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sy_search/sy_search_interface" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sy_search/sy_search_service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sy_sso" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sy_sso/sy_sso_interface" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sy_sso/sy_sso_service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sy_web_manager" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sy_web_order" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sy_web_portal" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sy_web_search" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sy_web_sso" charset="UTF-8" />
+  </component>
+</project>

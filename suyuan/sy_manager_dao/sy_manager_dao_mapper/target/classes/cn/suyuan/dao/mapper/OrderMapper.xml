@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.suyuan.dao.mapper.OrderMapper" >
+  <resultMap id="BaseResultMap" type="cn.suyuan.dao.pojo.Order" >
+    <id column="oderId" property="oderid" jdbcType="BIGINT" />
+    <result column="orderType" property="ordertype" jdbcType="INTEGER" />
+    <result column="companyId" property="companyid" jdbcType="VARCHAR" />
+    <result column="personId" property="personid" jdbcType="VARCHAR" />
+    <result column="commodityId" property="commodityid" jdbcType="VARCHAR" />
+    <result column="orderstate" property="orderstate" jdbcType="VARCHAR" />
+    <result column="ModePayment" property="modepayment" jdbcType="VARCHAR" />
+    <result column="orderMoney" property="ordermoney" jdbcType="INTEGER" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="updateTime" property="updatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    oderId, orderType, companyId, personId, commodityId, orderstate, ModePayment, orderMoney, 
+    createTime, updateTime
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.suyuan.dao.pojo.OrderExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from order
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from order
+    where oderId = #{oderid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from order
+    where oderId = #{oderid,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="cn.suyuan.dao.pojo.OrderExample" >
+    delete from order
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="cn.suyuan.dao.pojo.Order" >
+    insert into order (oderId, orderType, companyId, 
+      personId, commodityId, orderstate, 
+      ModePayment, orderMoney, createTime, 
+      updateTime)
+    values (#{oderid,jdbcType=BIGINT}, #{ordertype,jdbcType=INTEGER}, #{companyid,jdbcType=VARCHAR}, 
+      #{personid,jdbcType=VARCHAR}, #{commodityid,jdbcType=VARCHAR}, #{orderstate,jdbcType=VARCHAR}, 
+      #{modepayment,jdbcType=VARCHAR}, #{ordermoney,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{updatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.suyuan.dao.pojo.Order" >
+    insert into order
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="oderid != null" >
+        oderId,
+      </if>
+      <if test="ordertype != null" >
+        orderType,
+      </if>
+      <if test="companyid != null" >
+        companyId,
+      </if>
+      <if test="personid != null" >
+        personId,
+      </if>
+      <if test="commodityid != null" >
+        commodityId,
+      </if>
+      <if test="orderstate != null" >
+        orderstate,
+      </if>
+      <if test="modepayment != null" >
+        ModePayment,
+      </if>
+      <if test="ordermoney != null" >
+        orderMoney,
+      </if>
+      <if test="createtime != null" >
+        createTime,
+      </if>
+      <if test="updatetime != null" >
+        updateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="oderid != null" >
+        #{oderid,jdbcType=BIGINT},
+      </if>
+      <if test="ordertype != null" >
+        #{ordertype,jdbcType=INTEGER},
+      </if>
+      <if test="companyid != null" >
+        #{companyid,jdbcType=VARCHAR},
+      </if>
+      <if test="personid != null" >
+        #{personid,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityid != null" >
+        #{commodityid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderstate != null" >
+        #{orderstate,jdbcType=VARCHAR},
+      </if>
+      <if test="modepayment != null" >
+        #{modepayment,jdbcType=VARCHAR},
+      </if>
+      <if test="ordermoney != null" >
+        #{ordermoney,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="cn.suyuan.dao.pojo.OrderExample" resultType="java.lang.Integer" >
+    select count(*) from order
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update order
+    <set >
+      <if test="record.oderid != null" >
+        oderId = #{record.oderid,jdbcType=BIGINT},
+      </if>
+      <if test="record.ordertype != null" >
+        orderType = #{record.ordertype,jdbcType=INTEGER},
+      </if>
+      <if test="record.companyid != null" >
+        companyId = #{record.companyid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.personid != null" >
+        personId = #{record.personid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.commodityid != null" >
+        commodityId = #{record.commodityid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderstate != null" >
+        orderstate = #{record.orderstate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.modepayment != null" >
+        ModePayment = #{record.modepayment,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ordermoney != null" >
+        orderMoney = #{record.ordermoney,jdbcType=INTEGER},
+      </if>
+      <if test="record.createtime != null" >
+        createTime = #{record.createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updatetime != null" >
+        updateTime = #{record.updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update order
+    set oderId = #{record.oderid,jdbcType=BIGINT},
+      orderType = #{record.ordertype,jdbcType=INTEGER},
+      companyId = #{record.companyid,jdbcType=VARCHAR},
+      personId = #{record.personid,jdbcType=VARCHAR},
+      commodityId = #{record.commodityid,jdbcType=VARCHAR},
+      orderstate = #{record.orderstate,jdbcType=VARCHAR},
+      ModePayment = #{record.modepayment,jdbcType=VARCHAR},
+      orderMoney = #{record.ordermoney,jdbcType=INTEGER},
+      createTime = #{record.createtime,jdbcType=TIMESTAMP},
+      updateTime = #{record.updatetime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.suyuan.dao.pojo.Order" >
+    update order
+    <set >
+      <if test="ordertype != null" >
+        orderType = #{ordertype,jdbcType=INTEGER},
+      </if>
+      <if test="companyid != null" >
+        companyId = #{companyid,jdbcType=VARCHAR},
+      </if>
+      <if test="personid != null" >
+        personId = #{personid,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityid != null" >
+        commodityId = #{commodityid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderstate != null" >
+        orderstate = #{orderstate,jdbcType=VARCHAR},
+      </if>
+      <if test="modepayment != null" >
+        ModePayment = #{modepayment,jdbcType=VARCHAR},
+      </if>
+      <if test="ordermoney != null" >
+        orderMoney = #{ordermoney,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where oderId = #{oderid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.suyuan.dao.pojo.Order" >
+    update order
+    set orderType = #{ordertype,jdbcType=INTEGER},
+      companyId = #{companyid,jdbcType=VARCHAR},
+      personId = #{personid,jdbcType=VARCHAR},
+      commodityId = #{commodityid,jdbcType=VARCHAR},
+      orderstate = #{orderstate,jdbcType=VARCHAR},
+      ModePayment = #{modepayment,jdbcType=VARCHAR},
+      orderMoney = #{ordermoney,jdbcType=INTEGER},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      updateTime = #{updatetime,jdbcType=TIMESTAMP}
+    where oderId = #{oderid,jdbcType=BIGINT}
+  </update>
+</mapper>

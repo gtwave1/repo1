@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.suyuan.search.mapper.SearchCompanyMapper" >
+  <select id="getCompanyList" resultType="cn.suyuan.common.pojo.SearchCompany" >
+    SELECT
+      companyId id,
+      companyName name,
+      country,
+      employeeNum,
+      industry,
+      turnover,
+      synopsis,
+      icon,
+      officeWebsite,
+      dataCompleteness
+    FROM company;
+  </select>
+
+
+  <select id="getCompanyById" parameterType="String" resultType="cn.suyuan.common.pojo.SearchCompany">
+    SELECT
+      companyId id,
+      companyName name,
+      country,
+      employeeNum,
+      industry,
+      turnover,
+      synopsis,
+      icon,
+      officeWebsite,
+      dataCompleteness
+    FROM company;
+    WHERE id = #{companyId};
+  </select>
+
+</mapper>

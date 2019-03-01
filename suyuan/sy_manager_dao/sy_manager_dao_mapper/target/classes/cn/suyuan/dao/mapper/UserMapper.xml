@@ -1,0 +1,654 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.suyuan.dao.mapper.UserMapper" >
+  <resultMap id="BaseResultMap" type="cn.suyuan.dao.pojo.User" >
+    <id column="personId" property="personid" jdbcType="VARCHAR" />
+    <result column="nickname" property="nickname" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="wechart" property="wechart" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="INTEGER" />
+    <result column="country" property="country" jdbcType="INTEGER" />
+    <result column="homeAddress" property="homeaddress" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="company" property="company" jdbcType="VARCHAR" />
+    <result column="companyName" property="companyname" jdbcType="VARCHAR" />
+    <result column="industry" property="industry" jdbcType="VARCHAR" />
+    <result column="duties" property="duties" jdbcType="VARCHAR" />
+    <result column="wordCardPath" property="wordcardpath" jdbcType="VARCHAR" />
+    <result column="twitter" property="twitter" jdbcType="VARCHAR" />
+    <result column="facebook" property="facebook" jdbcType="VARCHAR" />
+    <result column="wechar" property="wechar" jdbcType="VARCHAR" />
+    <result column="smallTV" property="smalltv" jdbcType="VARCHAR" />
+    <result column="BusinessLicense" property="businesslicense" jdbcType="VARCHAR" />
+    <result column="activationCode_me" property="activationcodeMe" jdbcType="VARCHAR" />
+    <result column="activationCode_who" property="activationcodeWho" jdbcType="VARCHAR" />
+    <result column="limit" property="limit" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="cn.suyuan.dao.pojo.UserWithBLOBs" extends="BaseResultMap" >
+    <result column="whoSeeMe" property="whoseeme" jdbcType="LONGVARCHAR" />
+    <result column="collectionCompany" property="collectioncompany" jdbcType="LONGVARCHAR" />
+    <result column="collectionPeople" property="collectionpeople" jdbcType="LONGVARCHAR" />
+    <result column="setMealId" property="setmealid" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    personId, nickname, phone, wechart, email, username, password, sex, country, homeAddress, 
+    name, company, companyName, industry, duties, wordCardPath, twitter, facebook, wechar, 
+    smallTV, BusinessLicense, activationCode_me, activationCode_who, limit
+  </sql>
+  <sql id="Blob_Column_List" >
+    whoSeeMe, collectionCompany, collectionPeople, setMealId
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="cn.suyuan.dao.pojo.UserExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.suyuan.dao.pojo.UserExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from user
+    where personId = #{personid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from user
+    where personId = #{personid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="cn.suyuan.dao.pojo.UserExample" >
+    delete from user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="cn.suyuan.dao.pojo.UserWithBLOBs" >
+    insert into user (personId, nickname, phone, 
+      wechart, email, username, 
+      password, sex, country, 
+      homeAddress, name, company, 
+      companyName, industry, duties, 
+      wordCardPath, twitter, facebook, 
+      wechar, smallTV, BusinessLicense, 
+      activationCode_me, activationCode_who, limit, 
+      whoSeeMe, collectionCompany, collectionPeople, 
+      setMealId)
+    values (#{personid,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{wechart,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{sex,jdbcType=INTEGER}, #{country,jdbcType=INTEGER}, 
+      #{homeaddress,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{company,jdbcType=VARCHAR}, 
+      #{companyname,jdbcType=VARCHAR}, #{industry,jdbcType=VARCHAR}, #{duties,jdbcType=VARCHAR}, 
+      #{wordcardpath,jdbcType=VARCHAR}, #{twitter,jdbcType=VARCHAR}, #{facebook,jdbcType=VARCHAR}, 
+      #{wechar,jdbcType=VARCHAR}, #{smalltv,jdbcType=VARCHAR}, #{businesslicense,jdbcType=VARCHAR}, 
+      #{activationcodeMe,jdbcType=VARCHAR}, #{activationcodeWho,jdbcType=VARCHAR}, #{limit,jdbcType=VARCHAR}, 
+      #{whoseeme,jdbcType=LONGVARCHAR}, #{collectioncompany,jdbcType=LONGVARCHAR}, #{collectionpeople,jdbcType=LONGVARCHAR}, 
+      #{setmealid,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.suyuan.dao.pojo.UserWithBLOBs" >
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="personid != null" >
+        personId,
+      </if>
+      <if test="nickname != null" >
+        nickname,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="wechart != null" >
+        wechart,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="username != null" >
+        username,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="country != null" >
+        country,
+      </if>
+      <if test="homeaddress != null" >
+        homeAddress,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="company != null" >
+        company,
+      </if>
+      <if test="companyname != null" >
+        companyName,
+      </if>
+      <if test="industry != null" >
+        industry,
+      </if>
+      <if test="duties != null" >
+        duties,
+      </if>
+      <if test="wordcardpath != null" >
+        wordCardPath,
+      </if>
+      <if test="twitter != null" >
+        twitter,
+      </if>
+      <if test="facebook != null" >
+        facebook,
+      </if>
+      <if test="wechar != null" >
+        wechar,
+      </if>
+      <if test="smalltv != null" >
+        smallTV,
+      </if>
+      <if test="businesslicense != null" >
+        BusinessLicense,
+      </if>
+      <if test="activationcodeMe != null" >
+        activationCode_me,
+      </if>
+      <if test="activationcodeWho != null" >
+        activationCode_who,
+      </if>
+      <if test="limit != null" >
+        limit,
+      </if>
+      <if test="whoseeme != null" >
+        whoSeeMe,
+      </if>
+      <if test="collectioncompany != null" >
+        collectionCompany,
+      </if>
+      <if test="collectionpeople != null" >
+        collectionPeople,
+      </if>
+      <if test="setmealid != null" >
+        setMealId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="personid != null" >
+        #{personid,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null" >
+        #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="wechart != null" >
+        #{wechart,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="country != null" >
+        #{country,jdbcType=INTEGER},
+      </if>
+      <if test="homeaddress != null" >
+        #{homeaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="company != null" >
+        #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="companyname != null" >
+        #{companyname,jdbcType=VARCHAR},
+      </if>
+      <if test="industry != null" >
+        #{industry,jdbcType=VARCHAR},
+      </if>
+      <if test="duties != null" >
+        #{duties,jdbcType=VARCHAR},
+      </if>
+      <if test="wordcardpath != null" >
+        #{wordcardpath,jdbcType=VARCHAR},
+      </if>
+      <if test="twitter != null" >
+        #{twitter,jdbcType=VARCHAR},
+      </if>
+      <if test="facebook != null" >
+        #{facebook,jdbcType=VARCHAR},
+      </if>
+      <if test="wechar != null" >
+        #{wechar,jdbcType=VARCHAR},
+      </if>
+      <if test="smalltv != null" >
+        #{smalltv,jdbcType=VARCHAR},
+      </if>
+      <if test="businesslicense != null" >
+        #{businesslicense,jdbcType=VARCHAR},
+      </if>
+      <if test="activationcodeMe != null" >
+        #{activationcodeMe,jdbcType=VARCHAR},
+      </if>
+      <if test="activationcodeWho != null" >
+        #{activationcodeWho,jdbcType=VARCHAR},
+      </if>
+      <if test="limit != null" >
+        #{limit,jdbcType=VARCHAR},
+      </if>
+      <if test="whoseeme != null" >
+        #{whoseeme,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="collectioncompany != null" >
+        #{collectioncompany,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="collectionpeople != null" >
+        #{collectionpeople,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="setmealid != null" >
+        #{setmealid,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="cn.suyuan.dao.pojo.UserExample" resultType="java.lang.Integer" >
+    select count(*) from user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update user
+    <set >
+      <if test="record.personid != null" >
+        personId = #{record.personid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nickname != null" >
+        nickname = #{record.nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.phone != null" >
+        phone = #{record.phone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wechart != null" >
+        wechart = #{record.wechart,jdbcType=VARCHAR},
+      </if>
+      <if test="record.email != null" >
+        email = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.username != null" >
+        username = #{record.username,jdbcType=VARCHAR},
+      </if>
+      <if test="record.password != null" >
+        password = #{record.password,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sex != null" >
+        sex = #{record.sex,jdbcType=INTEGER},
+      </if>
+      <if test="record.country != null" >
+        country = #{record.country,jdbcType=INTEGER},
+      </if>
+      <if test="record.homeaddress != null" >
+        homeAddress = #{record.homeaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.name != null" >
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.company != null" >
+        company = #{record.company,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyname != null" >
+        companyName = #{record.companyname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.industry != null" >
+        industry = #{record.industry,jdbcType=VARCHAR},
+      </if>
+      <if test="record.duties != null" >
+        duties = #{record.duties,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wordcardpath != null" >
+        wordCardPath = #{record.wordcardpath,jdbcType=VARCHAR},
+      </if>
+      <if test="record.twitter != null" >
+        twitter = #{record.twitter,jdbcType=VARCHAR},
+      </if>
+      <if test="record.facebook != null" >
+        facebook = #{record.facebook,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wechar != null" >
+        wechar = #{record.wechar,jdbcType=VARCHAR},
+      </if>
+      <if test="record.smalltv != null" >
+        smallTV = #{record.smalltv,jdbcType=VARCHAR},
+      </if>
+      <if test="record.businesslicense != null" >
+        BusinessLicense = #{record.businesslicense,jdbcType=VARCHAR},
+      </if>
+      <if test="record.activationcodeMe != null" >
+        activationCode_me = #{record.activationcodeMe,jdbcType=VARCHAR},
+      </if>
+      <if test="record.activationcodeWho != null" >
+        activationCode_who = #{record.activationcodeWho,jdbcType=VARCHAR},
+      </if>
+      <if test="record.limit != null" >
+        limit = #{record.limit,jdbcType=VARCHAR},
+      </if>
+      <if test="record.whoseeme != null" >
+        whoSeeMe = #{record.whoseeme,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.collectioncompany != null" >
+        collectionCompany = #{record.collectioncompany,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.collectionpeople != null" >
+        collectionPeople = #{record.collectionpeople,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.setmealid != null" >
+        setMealId = #{record.setmealid,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update user
+    set personId = #{record.personid,jdbcType=VARCHAR},
+      nickname = #{record.nickname,jdbcType=VARCHAR},
+      phone = #{record.phone,jdbcType=VARCHAR},
+      wechart = #{record.wechart,jdbcType=VARCHAR},
+      email = #{record.email,jdbcType=VARCHAR},
+      username = #{record.username,jdbcType=VARCHAR},
+      password = #{record.password,jdbcType=VARCHAR},
+      sex = #{record.sex,jdbcType=INTEGER},
+      country = #{record.country,jdbcType=INTEGER},
+      homeAddress = #{record.homeaddress,jdbcType=VARCHAR},
+      name = #{record.name,jdbcType=VARCHAR},
+      company = #{record.company,jdbcType=VARCHAR},
+      companyName = #{record.companyname,jdbcType=VARCHAR},
+      industry = #{record.industry,jdbcType=VARCHAR},
+      duties = #{record.duties,jdbcType=VARCHAR},
+      wordCardPath = #{record.wordcardpath,jdbcType=VARCHAR},
+      twitter = #{record.twitter,jdbcType=VARCHAR},
+      facebook = #{record.facebook,jdbcType=VARCHAR},
+      wechar = #{record.wechar,jdbcType=VARCHAR},
+      smallTV = #{record.smalltv,jdbcType=VARCHAR},
+      BusinessLicense = #{record.businesslicense,jdbcType=VARCHAR},
+      activationCode_me = #{record.activationcodeMe,jdbcType=VARCHAR},
+      activationCode_who = #{record.activationcodeWho,jdbcType=VARCHAR},
+      limit = #{record.limit,jdbcType=VARCHAR},
+      whoSeeMe = #{record.whoseeme,jdbcType=LONGVARCHAR},
+      collectionCompany = #{record.collectioncompany,jdbcType=LONGVARCHAR},
+      collectionPeople = #{record.collectionpeople,jdbcType=LONGVARCHAR},
+      setMealId = #{record.setmealid,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update user
+    set personId = #{record.personid,jdbcType=VARCHAR},
+      nickname = #{record.nickname,jdbcType=VARCHAR},
+      phone = #{record.phone,jdbcType=VARCHAR},
+      wechart = #{record.wechart,jdbcType=VARCHAR},
+      email = #{record.email,jdbcType=VARCHAR},
+      username = #{record.username,jdbcType=VARCHAR},
+      password = #{record.password,jdbcType=VARCHAR},
+      sex = #{record.sex,jdbcType=INTEGER},
+      country = #{record.country,jdbcType=INTEGER},
+      homeAddress = #{record.homeaddress,jdbcType=VARCHAR},
+      name = #{record.name,jdbcType=VARCHAR},
+      company = #{record.company,jdbcType=VARCHAR},
+      companyName = #{record.companyname,jdbcType=VARCHAR},
+      industry = #{record.industry,jdbcType=VARCHAR},
+      duties = #{record.duties,jdbcType=VARCHAR},
+      wordCardPath = #{record.wordcardpath,jdbcType=VARCHAR},
+      twitter = #{record.twitter,jdbcType=VARCHAR},
+      facebook = #{record.facebook,jdbcType=VARCHAR},
+      wechar = #{record.wechar,jdbcType=VARCHAR},
+      smallTV = #{record.smalltv,jdbcType=VARCHAR},
+      BusinessLicense = #{record.businesslicense,jdbcType=VARCHAR},
+      activationCode_me = #{record.activationcodeMe,jdbcType=VARCHAR},
+      activationCode_who = #{record.activationcodeWho,jdbcType=VARCHAR},
+      limit = #{record.limit,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.suyuan.dao.pojo.UserWithBLOBs" >
+    update user
+    <set >
+      <if test="nickname != null" >
+        nickname = #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="wechart != null" >
+        wechart = #{wechart,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="country != null" >
+        country = #{country,jdbcType=INTEGER},
+      </if>
+      <if test="homeaddress != null" >
+        homeAddress = #{homeaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="company != null" >
+        company = #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="companyname != null" >
+        companyName = #{companyname,jdbcType=VARCHAR},
+      </if>
+      <if test="industry != null" >
+        industry = #{industry,jdbcType=VARCHAR},
+      </if>
+      <if test="duties != null" >
+        duties = #{duties,jdbcType=VARCHAR},
+      </if>
+      <if test="wordcardpath != null" >
+        wordCardPath = #{wordcardpath,jdbcType=VARCHAR},
+      </if>
+      <if test="twitter != null" >
+        twitter = #{twitter,jdbcType=VARCHAR},
+      </if>
+      <if test="facebook != null" >
+        facebook = #{facebook,jdbcType=VARCHAR},
+      </if>
+      <if test="wechar != null" >
+        wechar = #{wechar,jdbcType=VARCHAR},
+      </if>
+      <if test="smalltv != null" >
+        smallTV = #{smalltv,jdbcType=VARCHAR},
+      </if>
+      <if test="businesslicense != null" >
+        BusinessLicense = #{businesslicense,jdbcType=VARCHAR},
+      </if>
+      <if test="activationcodeMe != null" >
+        activationCode_me = #{activationcodeMe,jdbcType=VARCHAR},
+      </if>
+      <if test="activationcodeWho != null" >
+        activationCode_who = #{activationcodeWho,jdbcType=VARCHAR},
+      </if>
+      <if test="limit != null" >
+        limit = #{limit,jdbcType=VARCHAR},
+      </if>
+      <if test="whoseeme != null" >
+        whoSeeMe = #{whoseeme,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="collectioncompany != null" >
+        collectionCompany = #{collectioncompany,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="collectionpeople != null" >
+        collectionPeople = #{collectionpeople,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="setmealid != null" >
+        setMealId = #{setmealid,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where personId = #{personid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="cn.suyuan.dao.pojo.UserWithBLOBs" >
+    update user
+    set nickname = #{nickname,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      wechart = #{wechart,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      username = #{username,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=INTEGER},
+      country = #{country,jdbcType=INTEGER},
+      homeAddress = #{homeaddress,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      company = #{company,jdbcType=VARCHAR},
+      companyName = #{companyname,jdbcType=VARCHAR},
+      industry = #{industry,jdbcType=VARCHAR},
+      duties = #{duties,jdbcType=VARCHAR},
+      wordCardPath = #{wordcardpath,jdbcType=VARCHAR},
+      twitter = #{twitter,jdbcType=VARCHAR},
+      facebook = #{facebook,jdbcType=VARCHAR},
+      wechar = #{wechar,jdbcType=VARCHAR},
+      smallTV = #{smalltv,jdbcType=VARCHAR},
+      BusinessLicense = #{businesslicense,jdbcType=VARCHAR},
+      activationCode_me = #{activationcodeMe,jdbcType=VARCHAR},
+      activationCode_who = #{activationcodeWho,jdbcType=VARCHAR},
+      limit = #{limit,jdbcType=VARCHAR},
+      whoSeeMe = #{whoseeme,jdbcType=LONGVARCHAR},
+      collectionCompany = #{collectioncompany,jdbcType=LONGVARCHAR},
+      collectionPeople = #{collectionpeople,jdbcType=LONGVARCHAR},
+      setMealId = #{setmealid,jdbcType=LONGVARCHAR}
+    where personId = #{personid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.suyuan.dao.pojo.User" >
+    update user
+    set nickname = #{nickname,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      wechart = #{wechart,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      username = #{username,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=INTEGER},
+      country = #{country,jdbcType=INTEGER},
+      homeAddress = #{homeaddress,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      company = #{company,jdbcType=VARCHAR},
+      companyName = #{companyname,jdbcType=VARCHAR},
+      industry = #{industry,jdbcType=VARCHAR},
+      duties = #{duties,jdbcType=VARCHAR},
+      wordCardPath = #{wordcardpath,jdbcType=VARCHAR},
+      twitter = #{twitter,jdbcType=VARCHAR},
+      facebook = #{facebook,jdbcType=VARCHAR},
+      wechar = #{wechar,jdbcType=VARCHAR},
+      smallTV = #{smalltv,jdbcType=VARCHAR},
+      BusinessLicense = #{businesslicense,jdbcType=VARCHAR},
+      activationCode_me = #{activationcodeMe,jdbcType=VARCHAR},
+      activationCode_who = #{activationcodeWho,jdbcType=VARCHAR},
+      limit = #{limit,jdbcType=VARCHAR}
+    where personId = #{personid,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="sy_common" />
+        <module name="sy_manager_company_interface" />
+        <module name="sy_manager_company_service" />
+        <module name="sy_manager_dao_mapping" />
+        <module name="sy_manager_dao_pojo" />
+        <module name="sy_manager_item_interface" />
+        <module name="sy_manager_item_service" />
+        <module name="sy_order_interface" />
+        <module name="sy_order_service" />
+        <module name="sy_search_interface" />
+        <module name="sy_search_service" />
+        <module name="sy_sso_interface" />
+        <module name="sy_sso_service" />
+        <module name="sy_web_manager" />
+        <module name="sy_web_order" />
+        <module name="sy_web_portal" />
+        <module name="sy_web_search" />
+        <module name="sy_web_sso" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="sy_common" target="1.8" />
+      <module name="sy_manager_company" target="1.8" />
+      <module name="sy_manager_company_interface" target="1.8" />
+      <module name="sy_manager_company_service" target="1.8" />
+      <module name="sy_manager_dao" target="1.8" />
+      <module name="sy_manager_dao_mapping" target="1.8" />
+      <module name="sy_manager_dao_pojo" target="1.8" />
+      <module name="sy_manager_item" target="1.8" />
+      <module name="sy_manager_item_interface" target="1.8" />
+      <module name="sy_manager_item_service" target="1.8" />
+      <module name="sy_order" target="1.8" />
+      <module name="sy_order_interface" target="1.8" />
+      <module name="sy_order_service" target="1.8" />
+      <module name="sy_parent" target="1.8" />
+      <module name="sy_search" target="1.8" />
+      <module name="sy_search_interface" target="1.8" />
+      <module name="sy_search_service" target="1.8" />
+      <module name="sy_sso" target="1.8" />
+      <module name="sy_sso_interface" target="1.8" />
+      <module name="sy_sso_service" target="1.8" />
+      <module name="sy_web_manager" target="1.8" />
+      <module name="sy_web_order" target="1.8" />
+      <module name="sy_web_portal" target="1.8" />
+      <module name="sy_web_search" target="1.8" />
+      <module name="sy_web_sso" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

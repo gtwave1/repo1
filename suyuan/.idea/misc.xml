@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/sy_manager_company/sy_manager_company_service" />
+    <file type="web" url="file://$PROJECT_DIR$/sy_manager_item/sy_manager_item_service" />
+    <file type="web" url="file://$PROJECT_DIR$/sy_order/sy_order_service" />
+    <file type="web" url="file://$PROJECT_DIR$/sy_search/sy_search_service" />
+    <file type="web" url="file://$PROJECT_DIR$/sy_sso/sy_sso_service" />
+    <file type="web" url="file://$PROJECT_DIR$/sy_web_manager" />
+    <file type="web" url="file://$PROJECT_DIR$/sy_web_order" />
+    <file type="web" url="file://$PROJECT_DIR$/sy_web_search" />
+    <file type="web" url="file://$PROJECT_DIR$/sy_web_sso" />
+  </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/sy_common/pom.xml" />
+        <option value="$PROJECT_DIR$/sy_manager_company/pom.xml" />
+        <option value="$PROJECT_DIR$/sy_manager_dao/pom.xml" />
+        <option value="$PROJECT_DIR$/sy_manager_item/pom.xml" />
+        <option value="$PROJECT_DIR$/sy_order/pom.xml" />
+        <option value="$PROJECT_DIR$/sy_parent/pom.xml" />
+        <option value="$PROJECT_DIR$/sy_search/pom.xml" />
+        <option value="$PROJECT_DIR$/sy_sso/pom.xml" />
+        <option value="$PROJECT_DIR$/sy_web_manager/pom.xml" />
+        <option value="$PROJECT_DIR$/sy_web_order/pom.xml" />
+        <option value="$PROJECT_DIR$/sy_web_portal/pom.xml" />
+        <option value="$PROJECT_DIR$/sy_web_search/pom.xml" />
+        <option value="$PROJECT_DIR$/sy_web_sso/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" project-jdk-name="1.8" project-jdk-type="JavaSDK" />
+</project>

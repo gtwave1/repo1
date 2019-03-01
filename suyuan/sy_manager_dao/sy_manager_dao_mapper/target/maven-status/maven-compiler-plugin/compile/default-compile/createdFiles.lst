@@ -1,0 +1,9 @@
+cn\suyuan\dao\mapper\CompanyMapper.class
+cn\suyuan\dao\mapper\RegionMapper.class
+cn\suyuan\dao\mapper\OrderMapper.class
+cn\suyuan\dao\mapper\UserMapper.class
+cn\suyuan\dao\mapper\ItemMapper.class
+cn\suyuan\dao\mapper\WordbookMapper.class
+cn\suyuan\dao\mapper\TrackMapper.class
+cn\suyuan\dao\mapper\PricingpackageMapper.class
+cn\suyuan\dao\mapper\IndustryMapper.class

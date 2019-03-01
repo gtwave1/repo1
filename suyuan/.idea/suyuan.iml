@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/sy_manager_company/sy_manager_company_interface/target" />
+      <excludeFolder url="file://$MODULE_DIR$/sy_manager_dao/sy_manager_dao_mapper/target" />
+      <excludeFolder url="file://$MODULE_DIR$/sy_manager_dao/sy_manager_dao_pojo/target" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
